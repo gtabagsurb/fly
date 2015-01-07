@@ -492,7 +492,7 @@ textarea {
 
 body   {
 
-  background: #fff url(../img/bg.jpg) no-repeat center 60px;;
+  background: #fff url(../img/bg3.png) no-repeat center 60px;;
 
   margin: 0;
 
@@ -670,7 +670,12 @@ ul.top-menu {
 
 .header h1 {
 
-  color: #ffffff;
+  /*color: #ffffff;*/
+  /*color: #913FCC;*/
+  /*color: #528fcc;*/
+  /* color: #312f3e; */
+  color: #312f3e;
+  
 
   font-weight: normal;
 
@@ -710,7 +715,12 @@ ul.top-menu {
 
   line-height: 28px;
 
-  color: #dce4e6;
+  /*color: #dce4e6;*/
+  /*color: #913FCC;*/
+  /*color: #528fcc;*/
+  /* color: #312f3e; */
+  color: #312f3e;
+  
 
   text-align: center;
 

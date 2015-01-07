@@ -4,7 +4,7 @@
     die('Ошибка соединения: '.mysqli_connect_error()); //или if(!$link) {..
   else {
     $tmp="AA";
-    $query="SELECT airport AS label FROM airports3 WHERE airport like concat('%','".$_GET['term']."','%')";
+    $query="SELECT airport AS label FROM prd_airports WHERE airport like concat('%','".$_GET['term']."','%')";
     //echo $query;
     $elements=mysqli_query($link,$query); 
     //echo $elements."<br>";
