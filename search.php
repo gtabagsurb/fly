@@ -1,5 +1,5 @@
 <?php
-  $link = mysqli_connect('localhost','root','','test');
+  $link = mysqli_connect('localhost','root','','flight');
   if(mysqli_connect_errno())
     die('Ошибка соединения: '.mysqli_connect_error()); //или if(!$link) {..
   else {

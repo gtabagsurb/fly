@@ -274,8 +274,10 @@ function validate_and_send()
   var PointCount = document.forms[0].elements["OrderForm[ways][from][]"].length;
   var FromAirport=[];
   var ToAirport=[];
+  var DepartureDate=[];
   
-  if (Type==3) {
+  if (Type==3) { //multiple destinations
+    /*
     var s="";
     for (var i=0; i<PointCount; i++) {
       s+=i.toString();
@@ -288,18 +290,21 @@ function validate_and_send()
     };
     
     alert(s);
+    */
     
     for (var i=0; i<PointCount; i++) {
       FromAirport[i] = document.forms[0].elements["OrderForm[ways][from][]"][i].value;
       ToAirport[i] = document.forms[0].elements["OrderForm[ways][to][]"][i].value;
+      DepartureDate[i] = document.forms[0].elements["OrderForm[ways][departing_date][]"][i].value;
     }
   }
-  else {
+  else { //one-way or roundtrip
     FromAirport[0] = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
     ToAirport[0] = document.forms[0].elements["OrderForm[ways][to][]"][0].value;
+    DepartureDate[0] = document.forms[0].elements["OrderForm[ways][departing_date][]"][0].value;
   };
-  alert("len: "+PointCount);
-  alert(FromAirport);
+  //alert("len: "+PointCount);
+  //alert(FromAirport);
   //var FromAirport1 = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
   //alert(document.forms[0].elements["OrderForm[ways][from][]"].length);
   
@@ -328,7 +333,7 @@ function validate_and_send()
   var msg="fullname="+FullName+"&returndate="+ReturnDate+"&email="+Email+"&phone="+Phone+"&type="+Type+"&class="+Class+"&adultsnumber="+AdultsNumber+"&childsnumber="+ChildsNumber;  
   
   for (var i=0; i<PointCount; i++) {
-    msg += "&fromairport"+i.toString()+"="+FromAirport[i]+"&toairport"+i.toString()+"="+ToAirport[i];
+    msg += "&fromairport"+i.toString()+"="+FromAirport[i]+"&toairport"+i.toString()+"="+ToAirport[i]+"&departuredate"+i.toString()+"="+DepartureDate[i];
     if (Type!=3){break;};
   };
   alert(msg);
@@ -336,20 +341,20 @@ function validate_and_send()
   
   $.ajax({
      type: "POST",
-     url: "tst4.php",
+     url: "db_save.php",
      data: msg,
      success: function( data ) {
         alert( data ); // пришедшие данные
      },
      complete: function( xhr ) {
-        alert( 'запрос успешно выполнен' );
+        //alert( 'запрос успешно выполнен' );
      },
      error: function( xhr, status ) {
         alert( 'произошла ошибка при выполнении запроса' );
      }
   });
   
-  alert("after ajax");
+  //alert("after ajax");
   
 }
 
