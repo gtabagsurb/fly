@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>Real-Time Form Validation Using jQuery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" href="tst3.css" type="text/css" media="screen" />
+</head>
+<body>
+<div id="content">
+        <form id="jform" action="tst3.php" method="post">
+                <fieldset>
+                        <legend>Personal Info</legend>
+                        <p>
+                                <label for="fullname" class="block">Full name:</label>
+                                <input type="text" name="fullname" id="fullname" />
+                        </p>
+                        <p>
+                                <label for="birthday" class="block">Day of birth <small>(dd-mm-yyyy)</small>:</label>
+                                <input type="text" name="birthday" id="birthday" />
+                        </p>
+                        <p>
+                                <label class="block">I am:</label>
+                                <input type="radio" name="gender" id="man" value="man" /> <label for="man">Man</label>
+                                <input type="radio" name="gender" id="woman" value="woman" /> <label for="woman">Woman</label>
+                        </p>
+                        <p>
+                                <label class="block">I own:</label>
+                                <input type="checkbox" name="vehicle" id="car" /> <label for="car">car</label>
+                                <input type="checkbox" name="vehicle" id="airplane" /> <label for="airplane">airplane</label>
+                                <input type="checkbox" name="vehicle" id="bicycle" /> <label for="bicycle">bicycle</label>
+                                <input type="checkbox" name="vehicle" id="ship" /> <label for="ship">ship</label>
+                        </p>
+                </fieldset>
+                <fieldset>
+                        <legend>Email</legend>
+                        <p>
+                                <label for="email" class="block">Email <small>(mickey@mou.se)</small>:</label>
+                                <input type="text" name="email" id="email" />
+                        </p>
+                </fieldset>
+                <fieldset>
+                        <legend>About You</legend>
+                        <p>
+                                <label for="about" class="block">Tell us a little bit about yourself:</label>
+                                <textarea id="about" cols="50" rows="10"></textarea>
+                        </p>
+                </fieldset>
+                <p>
+                        <button type="submit" id="send">submit</button>
+                </p>
+        </form>
+</div><!-- content -->
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" charset="utf-8"></script>
+<script type="text/javascript" src="tst_validate3.js" charset="utf-8"></script>
+</body>
+</html>

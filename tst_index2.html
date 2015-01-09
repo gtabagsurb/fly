@@ -7,7 +7,7 @@
 	<title></title>
 	<link rel="shortcut icon" href="#" />
 	<meta name="csrf-param" content="_csrf">
-<meta name="csrf-token" content="R1dVc3hRdUoxA2BFKhYDAT8bETZVJx85AGMQOgsSPH8PMwIyEmg7Eg==">
+<meta name="csrf-token" content="R1dVc3hRdUoxA2BFKhYDAT8bETZVJx85AGMQ0gsSPH8PMwIyEmg7Eg==">
 <link href="/assets/3d562eee/theme/jquery.ui.css" rel="stylesheet">
 <link href="/owl-carousel/assets/owl.carousel.min.css" rel="stylesheet">
 <link href="/owl-carousel/assets/owl.theme.default.min.css" rel="stylesheet">
@@ -18,8 +18,11 @@
 <script src="/assets/1d087012/jquery.js"></script>
 <script src="/assets/b6758138/yii.js"></script>
 <script src="/owl-carousel/owl.carousel.js"></script>
-<script src="/js/fly-sky.js"></script>
-<script src="/js/bootstrap.min.js"></script></head>
+<script src="tst_fly-sky2.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="tst_form2.js"></script>
+
+</head>
 <body>
 
 <div class="top-header">
@@ -50,12 +53,15 @@
 			<h3>Here at FlightForSale we hunt for discount deals on first class and business flights to give you impossibly low airfare rates.
 Fill out the form below to receive a free quote and our representative will get in touch with you within 3 hours.</h3>
 		</div>
-		<div class="order-form-container">
+  
+  <div id="result">Тут будет статус загрузки</div><br /><br />
+  <div onclick="SendForm()">Отправить форму через Ajax</div><br />
 
-      <!--  -->
-      
-<form id="order-form" class="order-form" action="javascript:validate_and_send();"> <!-- action="/site/index" method="post" data-way-suggestion-url= "/site/suggest"-->
-<input type="hidden" name="_csrf" value="R1dVc3hRdUoxA2BFKhYDAT8bETZVJx85AGMQOgsSPH8PMwIyEmg7Eg=="><fieldset>
+  
+		<div class="order-form-container">
+			
+<form id="order-form" class="order-form" action="tst3.php" method="post" data-way-suggestion-url= "/site/suggest" >
+<input type="hidden" name="_csrf" value="R1dVc3hRdUoxA2BFKhYDAT8bETZVJx85AGMQ0gsSPH8PMwIyEmg7Eg=="><fieldset>
 	<div class="order-form-header">
 		<a name="quote"></a>
 
@@ -325,7 +331,7 @@ Fill out the form below to receive a free quote and our representative will get 
 		</div>
 
 		<div class="getquote-container">
-			<button id="getquote-button" type="submit" class="getquote-form">Get a free quote</button>
+			<button type="submit" class="getquote-form">Get a free quote</button>
 		</div>
 	</div>
 </fieldset>

@@ -32,7 +32,30 @@ function initializeDatePicker(link) {
     });
 }
 
+//var availableTags = ['London, United Kingdom (LHR - London Heathrow)','Anaa, French Polynesia (AAA - Anaa)','Arrabury, Australia (AAB - Arrabury)','Al Arish, Egypt (AAC - Al Arish International Airport)','Ad-Dabbah, Sudan (AAD - Ad-Dabbah)'];
+var availableTags = [{"label":"Anaa, French Polynesia (AAA, Anaa)"},{"label":"Arrabury, Australia (AAB, Arrabury)"},{"label":"Al Arish, Egypt (AAC, Al Arish International Airport)"},{"label":"Ad-Dabbah, Sudan (AAD, Ad-Dabbah)"},{"label":"Annaba, Algeria (AAE, Les Salines)"},{"label":"Apalachicola, United States (AAF, Municipal)"},{"label":"Arapoti, Brazil (AAG, Arapoti)"},{"label":"Aachen, Germany (AAH, Aachen\/Merzbruck)"},{"label":"Arraias, Brazil (AAI, Arraias)"},{"label":"Awaradam, Suriname (AAJ, Cayana Airstrip)"},{"label":"Aranuka, Kiribati (AAK, Aranuka)"},{"label":"Aalborg, Denmark (AAL, Aalborg)"},{"label":"Mala Mala, South Africa (AAM, Mala Mala)"},{"label":"Al Ain, United Arab Emirates (AAN, Al Ain)"},{"label":"Anaco, Venezuela (AAO, Anaco)"},{"label":"Houston, TX, United States (AAP, Andrau Airpark)"},{"label":"Anapa, Russian Federation (AAQ, Vityazevo)"},{"label":"Aarhus, Denmark (AAR, Aarhus Airport)"},{"label":"Apalapsili, Indonesia (AAS, Apalapsili)"},{"label":"Altay, China (AAT, Altay)"},{"label":"Asau, Samoa (AAU, Asau)"},{"label":"Surallah, Philippines (AAV, Allah Valley)"},{"label":"Abbottabad, Pakistan (AAW, Abbottabad)"},{"label":"Araxa, Brazil (AAX, Araxa)"},{"label":"Al Ghaydah, Yemen (AAY, Al Ghaydah)"},{"label":"Ambriz, Angola (AAZ, Ambriz)"},{"label":"Aalesund, Norway (AES, Vigra)"},{"label":"Herlong, Norway (AHC, Amedee AAF)"},{"label":"Araak, Iran (AJK, Araak)"},{"label":"Aberdeen, United States (APG, Phillips AAF)"},{"label":"Fort Devens, Haiti (AYE, AAF Heliport)"},{"label":"Bialla, Papua New Guinea (BAA, Bialla)"},{"label":"Baker Island, United States (BAR, Baker Aaf)"},{"label":"El Paso, United States (BIF, Biggs Aaf)"},{"label":"Bolaang, Indonesia (BJG, Bolaang)"},{"label":"Blackstone, United States (BKT, Blackstone AAF)"},{"label":"Pohakuloa, Finland (BSF, Bradshaw AAF)"},{"label":"Boussaada, Algeria (BUJ, Ain Eddis)"},{"label":"Dibaa, United Arab Emirates (BYB, Dibaa)"},{"label":"Fort Irwin, United States (BYS, Bicycle Lake AAF)"},{"label":"Catacamas, Honduras (CAA, Catacamas)"},{"label":"Neerlerit Inaat, Greenland (CNP, Neerlerit Inaat)"},{"label":"Mineral Wells, Indonesia (CWO, Ft Wolter AAF)"},{"label":"Fort Belvoir, United States (DAA, Davison AAF)"},{"label":"Dar Es Salaam, Tanzania (DAR, International)"},{"label":"Dabaa City, Egypt (DBB, Alalamain Intl.)"},{"label":"Dugway, United States (DPG, Michael AAF)"},{"label":"Eagle, United States (EAA, Eagle)"},{"label":"Edgewood, United States (EDG, Weide AAF)"},{"label":"Laayoune, Western Sahara (EUN, Hassan I)"},{"label":"Faranah, Guinea (FAA, Faranah)"},{"label":"Faaite, French Polynesia (FAC, Faaite)"},{"label":"Fort Eustis, Haiti (FAF, Felker AAF)"},{"label":"Fort Bragg, United States (FBG, Simmons AAF)"},{"label":"Colorado Springs, United States (FCS, Butts AAF)"},{"label":"Yakima, United States (FCT, Firing Center AAF)"},{"label":"Petersburg, Netherlands (FLE, Fort Lee AAF)"},{"label":"Fort Leavenworth, United States (FLV, Sherman AAF)"},{"label":"Fort Meade, Haiti (FME, Tipton AAF)"},{"label":"Forest Park, United States (FOP, Morris AAF)"},{"label":"Fort Riley, KS, United States (FRI, Marshall AAF)"},{"label":"Fort Richardson, Haiti (FRN, Bryant AAF)"},{"label":"Fort Sill, United States (FSI, Henry Post AAF)"},{"label":"Fort Sheridan, Haiti (FSN, Haley AAF)"},{"label":"Fort Knox, United States (FTK, Godman AAF)"},{"label":"Guamal, Colombia (GAA, Guamal)"},{"label":"Tacoma, United States (GRF, Gray Aaf)"},{"label":"Fort Hood, TX, United States (GRK, Gray Aaf)"},{"label":"Hasvik, Norway (HAA, Hasvik)"},{"label":"Hanimaadhoo, Maldives (HAQ, Hanimaadhoo)"},{"label":"Vantaa, Finland (HEL, Helsinki-Vantaa)"},{"label":"Hoffman, United States (HFF, Mackall AAF)"},{"label":"Jolon, United States (HGT, Hunter AAF)"},{"label":"Killeen, United States (HLR, Fort Hood AAF)"},{"label":"Hopkinsville, United States (HOP, Campbell AAF)"},{"label":"Huntsville, United States (HUA, Redstone AAF)"},{"label":"Hyvinkaa, Finland (HYV, Hyvinkaa)"},{"label":"Igarka, Russian Federation (IAA, Igarka)"},{"label":"Galloway, Ireland (IIA, Inishmaan)"},{"label":"Ilaam, Iran (IIL, Ilaam)"},{"label":"Iraan, United States (IRB, Municipal)"},{"label":"Jalalabad, Afghanistan (JAA, Jalalabad)"},{"label":"Aasiaat, Greenland (JEG, Aasiaat)"},{"label":"Paamiut, Greenland (JFR, Frederikshab)"},{"label":"Josephstaal, Papua New Guinea (JOP, Josephstaal)"},{"label":"Qaarsut, Greenland (JQA, Qaarsut)"},{"label":"Kasama, Zambia (KAA, Kasama)"},{"label":"Kajaani, Finland (KAJ, Kajaani)"},{"label":"Kaadedhdhoo, Cote D'Ivoire (KDM, Kaadedhdhoo)"},{"label":"Koinghaas, South Africa (KIG, Koinghaas)"},{"label":"Kokkola\/Pietarsaari, Finland (KOK, Kruunupyy)"},{"label":"Kasaan, United States (KXA, Kasaan SPB)"},{"label":"Lamar, United States (LAA, Lamar Field)"},{"label":"Yuma, Indonesia (LGF, Laguna AAF)"},{"label":"Hinesville, United States (LIY, Wright AAF)"},{"label":"Alluitsup Paa, Greenland (LLU, Alluitsup Paa)"},{"label":"Laarbruch, Germany (LRC, R.A.F.)"},{"label":"Lathrop, United States (LRO, Sharpe AAF)"},{"label":"Lexington, United States (LSD, Creech AAF)"},{"label":"Columbus, United States (LSF, Lawson Aaf)"},{"label":"Chennai\/Madras, India (MAA, Madras International (meenambakkam))"},{"label":"Columbus, United States (MKF, Mckenna AAF)"},{"label":"Maan, Jordan (MPQ, Maan)"},{"label":"Maastricht, Netherlands (MST, Maastricht\/aachen)"},{"label":"Fort Indiantown, Haiti (MUI, Muir AAF)"},{"label":"Narrabri, Australia (NAA, Narrabri)"},{"label":"Qaanaaq, Greenland (NAQ, Qaanaaq)"},{"label":"Ozark, United States (OZR, Cairns AAF)"},{"label":"Pa-an, Myanmar (PAA, Pa-an)"},{"label":"Paama, New Caledonia (PBJ, Paama)"},{"label":"Fort Polk, United States (POE, Polk AAF)"},{"label":"Papeete, French Polynesia (PPT, Faa'a)"},{"label":"Akunnaaq, Greenland (QCU, Heliport)"},{"label":"Niaqornaarsuk, Greenland (QMK, Heliport)"},{"label":"Kangaatsiaq, Greenland (QPW, Heliport)"},{"label":"Ikerasaarsuk, Canada (QRY, Heliport)"},{"label":"Rakanda, Papua New Guinea (RAA, Rakanda)"},{"label":"Reading, United States (RDG, Municipal\/Spaatz Fld)"},{"label":"Rostock-laage, Germany (RLG, Laage)"},{"label":"Saratoga, United States (SAA, Shively Field)"},{"label":"Saarbruecken, Germany (SCN, Ensheim)"},{"label":"Saldanha Bay, South Africa (SDB, Langebaanweg)"},{"label":"Saarmelleek, Hungary (SOB, Saarmelleek\/balaton)"},{"label":"Savannah, GA, United States (SVN, Hunter AAF)"},{"label":"Philipsburg, St. Maarten, Netherlands (SXM, Princess Juliana International)"},{"label":"San Miguel, Canada (SYL, Roberts AAF)"},{"label":"Tarapaina, Solomon Islands (TAA, Tarapaina)"},{"label":"Fort Leonard Wood, United States (TBN, Forney AAF)"},{"label":"Taabo, Cote D'Ivoire (TBX, Taabo)"},{"label":"Tuscaloosa, United States (TCL, Van De Graaf)"},{"label":"Ulaanbaatar, Mongolia (ULN, Chinggis Khaan International)"},{"label":"Ulaangom, Mongolia (ULO, Ulaangom)"},{"label":"Underkhaan, Mongolia (UNR, Underkhaan)"},{"label":"Kuressaare, Estonia (URE, Kuressaare)"},{"label":"Vaasa, Finland (VAA, Vaasa)"},{"label":"Wales, United States (WAA, Wales)"},{"label":"Wee Waa, Australia (WEW, Wee Waa)"},{"label":"White Sands, United States (WSD, Condron AAF)"},{"label":"Anahim Lake, Canada (YAA, Anahim Lake)"},{"label":"Kugaaruk, Canada (YBB, Kugaaruk)"},{"label":"Alice Arm, Canada (ZAA, Alice Arm)"},{"label":"Aarhus Limo, Denmark (ZBU, Aarhus Limo)"},{"label":"Fictitious Point\/AA2, Germany (ZGZ, GermanRail Pass)"}];
 
+// city, country (iata - name) 
+
+//AAA|NTGA|Анаа||Анаа||+10.0|Французская Полинезия||PF|-17.355000|-145.508333|1500|3||||
+//AAB|YARY||Arrabury||Arrabury|-10.0|Австралия|Australia|AU|-26.690556|141.047500|1144|101||||
+//AAC|HEAR|||Аль-Ариш|Al Arish|+2.0|Египет|Egypt|EG|31.073333|33.835833|2650|37||||
+//AAD|TVSV||||Ad-Dabbah|+3.0|Судан|Sudan|SD|17.592777777778|33.959166666667||||||
+//AAE|DABB||Les Salines||Annaba|+1.0|Алжир|Algeria|DZ|36.822222|7.809444|3000|5||||
+//AAF|KAAF||Municipal||Apalachicola|-5.0|США|United States|US|29.727607|-85.027442|1585|6||||
+//AAG|SSYA||Arapoti||Arapoti|+0.0|Бразилия|Brazil|BR|-24.103875|-49.789078||805||||
+//AAH|EDKA||Aachen/Merzbruck|Аахен|Aachen|+1.0|Германия|Germany|DE|50.823056|6.186111||190||||http://www.flugplatz-aachen.de/
+//LHR|EGLL|Хитроу||Лондон||+0.0|Великобритания||GB|51.477500|-0.461389|3902|25|+44 (0)8700 000698|+44 (0)20 8745 4290|lhr3feedback@baa.com|http://www.heathrowairport.com
+
+/*
+var availableTags = [
+  {label:"Испанский", value:"es"},
+  {label:"Итальянский", value:"it"},
+  {label:"Английский", value:"en"},
+  {label:"Китайский", value:"zh"},
+  {label:"Русский", value:"ru"}
+];
+*/
 
 function initializeWayContainer(link) {
     $iataInputs = $(link).find(".iata-suggestion");
@@ -250,125 +273,15 @@ function initializeMap($selector) {
     });
 }
 
-
-function validate_and_send()
-{
-  var Type1 = document.forms[0].elements["OrderForm[tripType]"].value;
-  var Type=0;
-  switch(Type1) {
-    case "roundtrip": Type=1; break;
-    case "oneway":  Type=2; break;
-    case "multiple":  Type=3; break;
-  };
-  var Class1 = document.forms[0].elements["OrderForm[flightType]"].value;
-  var Class=0;
-  switch(Class1) {
-    case "business": Class=1; break;
-    case "first":  Class=2; break;
-  };
-  var FullName = document.forms[0].elements["orderform-customer_name"].value;
-  var Email = document.forms[0].elements["orderform-customer_email"].value;
-  var Phone = document.forms[0].elements["orderform-customer_phone"].value;
-  var ReturnDate = document.forms[0].elements["OrderForm[ways][returning_date][]"][0].value;
-  
-  var PointCount = document.forms[0].elements["OrderForm[ways][from][]"].length;
-  var FromAirport=[];
-  var ToAirport=[];
-  
-  if (Type==3) {
-    var s="";
-    for (var i=0; i<PointCount; i++) {
-      s+=i.toString();
-      if (document.forms[0].elements["OrderForm[ways][from][]"][i].value==""){
-        s+=" None";
-      }
-      else{
-        s+=" "+document.forms[0].elements["OrderForm[ways][from][]"][i].value;
-      };
-    };
-    
-    alert(s);
-    
-    for (var i=0; i<PointCount; i++) {
-      FromAirport[i] = document.forms[0].elements["OrderForm[ways][from][]"][i].value;
-      ToAirport[i] = document.forms[0].elements["OrderForm[ways][to][]"][i].value;
-    }
-  }
-  else {
-    FromAirport[0] = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
-    ToAirport[0] = document.forms[0].elements["OrderForm[ways][to][]"][0].value;
-  };
-  alert("len: "+PointCount);
-  alert(FromAirport);
-  //var FromAirport1 = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
-  //alert(document.forms[0].elements["OrderForm[ways][from][]"].length);
-  
-  var AdultsNumber = document.forms[0].elements["OrderForm[adult_count]"].value;
-  var ChildsNumber = document.forms[0].elements["OrderForm[kid_count]"].value;
-  
-  
-  //var len=document.form[0].elements.length-1;  //length-1, потому что кнопка считается за элемент и мы ее отбрасываем.
-  /*    var mas=[];  // создаем массив к торый собственно и будем заполнять
-      var paste=document.getElementById('paste'); 
-      for(var i=0;i<len;i++){
-       //var val=document.set_from.elements[i].value;
-         if (val!=0 && val!=undefined && val!=null){ // дабы не забивать массив не определенными значениями мы делаем проверку на передаваемое значение;
-         mas.push(val);       // работаем с массивом как со стеком
-       }
-       
-      }
-     //paste.innerHTML=mas; // ну и вывод массива
-  
-  */
-  
-  
-  alert($("#order-form").serialize());
-
-  
-  var msg="fullname="+FullName+"&returndate="+ReturnDate+"&email="+Email+"&phone="+Phone+"&type="+Type+"&class="+Class+"&adultsnumber="+AdultsNumber+"&childsnumber="+ChildsNumber;  
-  
-  for (var i=0; i<PointCount; i++) {
-    msg += "&fromairport"+i.toString()+"="+FromAirport[i]+"&toairport"+i.toString()+"="+ToAirport[i];
-    if (Type!=3){break;};
-  };
-  alert(msg);
-
-  
-  $.ajax({
-     type: "POST",
-     url: "tst4.php",
-     data: msg,
-     success: function( data ) {
-        alert( data ); // пришедшие данные
-     },
-     complete: function( xhr ) {
-        alert( 'запрос успешно выполнен' );
-     },
-     error: function( xhr, status ) {
-        alert( 'произошла ошибка при выполнении запроса' );
-     }
-  });
-  
-  alert("after ajax");
-  
-}
-
 $(document).ready(function() {
-  /*  
-  $('#getquote-button').on('click', function(){
-      alert("onclick");
-    });
-  */
     $('#main-navigation-menu').find('a').on('click', mainMenuItemClickHandler);
     $('#back-to-top-button').on('click', mainMenuItemClickHandler);
-    
+
     var wayCountInput = $("#orderform-waycount");
 
     var buttonAddWay =  $("#route-add-button");
     var buttonRemoveWay =  $("#route-remove-button");
 
-    
-  
     wayCountInput.val($(".order-form-flight").find(".way-item-container").length);
 
     buttonAddWay.on("click", function(e) {
@@ -401,8 +314,6 @@ $(document).ready(function() {
         wayCountInput.val(counter);
     });
 
-  
-  
     $("#clients").find(".clients-slider").owlCarousel({
         dots: false,
         nav: true,
