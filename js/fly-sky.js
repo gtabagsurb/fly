@@ -327,7 +327,7 @@ function validate_and_send()
   */
   
   
-  alert($("#order-form").serialize());
+  //alert($("#order-form").serialize());
 
   
   var msg="fullname="+FullName+"&returndate="+ReturnDate+"&email="+Email+"&phone="+Phone+"&type="+Type+"&class="+Class+"&adultsnumber="+AdultsNumber+"&childsnumber="+ChildsNumber;  
@@ -336,7 +336,7 @@ function validate_and_send()
     msg += "&fromairport"+i.toString()+"="+FromAirport[i]+"&toairport"+i.toString()+"="+ToAirport[i]+"&departuredate"+i.toString()+"="+DepartureDate[i];
     if (Type!=3){break;};
   };
-  alert(msg);
+  //alert(msg);
 
   
   $.ajax({
@@ -344,9 +344,12 @@ function validate_and_send()
      url: "db_save.php",
      data: msg,
      success: function( data ) {
-        alert( data ); // пришедшие данные
+        //alert( data ); // пришедшие данные
      },
      complete: function( xhr ) {
+       $(".order-form-container").replaceWith("<div class='order-form-container'><div class='order-form-flight order-form-flight-done'>	<h2>Thank you for your inquiry</h2>	<h4>Once we receive your request, one of our representatives will contact<br> you to provide the information you need.</h4>	<h4>FlightForSale Discount Flights <br>		+1 (954) 239 2196<br>		<a href=''>info@flightforsale.com</a>	</h4>	<div class='clearfix'></div>	<div class='form-border clearfix'></div>	<div class='getquote-container'>		<a href='http://flightforsale.com' class='getquote-form'>Another quote</a>	</div></div> <div>");
+       //S(".order-form-container").
+       
         //alert( 'запрос успешно выполнен' );
      },
      error: function( xhr, status ) {
