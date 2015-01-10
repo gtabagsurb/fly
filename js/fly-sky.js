@@ -250,9 +250,14 @@ function initializeMap($selector) {
     });
 }
 
+function validateEmail(email) { 
+    var re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(email);
+} 
 
 function validate_and_send()
 {
+  var Errors=false;
   var Type1 = document.forms[0].elements["OrderForm[tripType]"].value;
   var Type=0;
   switch(Type1) {
@@ -266,16 +271,43 @@ function validate_and_send()
     case "business": Class=1; break;
     case "first":  Class=2; break;
   };
+  
   var FullName = document.forms[0].elements["orderform-customer_name"].value;
+  FullName=FullName.trim();
+  if (FullName.length<1) {
+    Errors=true;
+    document.forms[0].elements["orderform-customer_name"].parentNode.className="input-container input-name has-error";
+  }
+  else {
+    document.forms[0].elements["orderform-customer_name"].parentNode.className="input-container input-name ";
+  };  
+  
   var Email = document.forms[0].elements["orderform-customer_email"].value;
+  Email=Email.trim();
+  if (!validateEmail(Email)){
+    Errors=true;
+    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-name has-error";
+  }
+  else{
+    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-name ";
+  };  
+  
   var Phone = document.forms[0].elements["orderform-customer_phone"].value;
+  Phone=Phone.trim();
+  if((Phone.replace(/[^0-9]/g, '')).length < 10) { 
+    Errors=true;
+    document.forms[0].elements["orderform-customer_phone"].parentNode.className="input-container input-name has-error";
+  } 
+  else {
+    document.forms[0].elements["orderform-customer_phone"].parentNode.className="input-container input-name ";
+  };
+  
   var ReturnDate = document.forms[0].elements["OrderForm[ways][returning_date][]"][0].value;
   
   var PointCount = document.forms[0].elements["OrderForm[ways][from][]"].length;
   var FromAirport=[];
   var ToAirport=[];
   var DepartureDate=[];
-  
   if (Type==3) { //multiple destinations
     /*
     var s="";
@@ -291,17 +323,34 @@ function validate_and_send()
     
     alert(s);
     */
-    
+    var EmptySet=true;
     for (var i=0; i<PointCount; i++) {
       FromAirport[i] = document.forms[0].elements["OrderForm[ways][from][]"][i].value;
       ToAirport[i] = document.forms[0].elements["OrderForm[ways][to][]"][i].value;
       DepartureDate[i] = document.forms[0].elements["OrderForm[ways][departing_date][]"][i].value;
-    }
+      if (FromAirport[i]!="" || ToAirport[i]!="" || DepartureDate[i]!="") {
+        EmptySet=false;
+        if (FromAirport[i]=="" || ToAirport[i]=="" || DepartureDate[i]=="") {
+          Errors=true;
+          console.log("Flight Error!");
+        }
+      }
+    };
+    if (EmptySet && !Errors){
+      Errors=true;
+    };
   }
   else { //one-way or roundtrip
     FromAirport[0] = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
     ToAirport[0] = document.forms[0].elements["OrderForm[ways][to][]"][0].value;
     DepartureDate[0] = document.forms[0].elements["OrderForm[ways][departing_date][]"][0].value;
+    if (FromAirport[0]=="" || ToAirport[0]=="" || DepartureDate[0]=="") {
+      Errors=true;
+      console.log("Flight Error!");
+    }
+    if (Type==1 && ReturnDate=="") {
+      console.log("ReturnDate Error!");
+    }
   };
   //alert("len: "+PointCount);
   //alert(FromAirport);
@@ -338,25 +387,33 @@ function validate_and_send()
   };
   //alert(msg);
 
-  
-  $.ajax({
-     type: "POST",
-     url: "db_save.php",
-     data: msg,
-     success: function( data ) {
-        //alert( data ); // пришедшие данные
-     },
-     complete: function( xhr ) {
-       $(".order-form-container").replaceWith("<div class='order-form-container'><div class='order-form-flight order-form-flight-done'>	<h2>Thank you for your inquiry</h2>	<h4>Once we receive your request, one of our representatives will contact<br> you to provide the information you need.</h4>	<h4>FlightForSale Discount Flights <br>		+1 (954) 239 2196<br>		<a href=''>info@flightforsale.com</a>	</h4>	<div class='clearfix'></div>	<div class='form-border clearfix'></div>	<div class='getquote-container'>		<a href='http://flightforsale.com' class='getquote-form'>Another quote</a>	</div></div> <div>");
-       //S(".order-form-container").
-       
-        //alert( 'запрос успешно выполнен' );
-     },
-     error: function( xhr, status ) {
-        alert( 'произошла ошибка при выполнении запроса' );
-     }
-  });
-  
+  if (Errors){
+    console.log("Error!");
+    document.getElementsByClassName("error-summary")[0].style.display="block";
+  }
+  else{
+    if (document.forms[0].elements["order-form-terms"].checked) {
+      $.ajax({
+        type: "POST",
+        url: "db_save.php",
+        data: msg,
+        success: function( data ) {
+          //alert( data ); // пришедшие данные
+        },
+        complete: function( xhr ) {
+           $(".order-form-container").replaceWith("<div class='order-form-container'><div class='order-form-flight order-form-flight-done'>	<h2>Thank you for your inquiry</h2>	<h4>Once we receive your request, one of our representatives will contact<br> you to provide the information you need.</h4>	<h4>FlightForSale Discount Flights <br>		+1 (954) 239 2196<br>		<a href=''>info@flightforsale.com</a>	</h4>	<div class='clearfix'></div>	<div class='form-border clearfix'></div>	<div class='getquote-container'>		<a href='http://flightforsale.com' class='getquote-form'>Another quote</a>	</div></div> <div>");
+          //S(".order-form-container").
+          //alert( 'запрос успешно выполнен' );
+        },
+        error: function( xhr, status ) {
+          alert( 'произошла ошибка при выполнении запроса' );
+        }
+      });
+    }
+    else { //if terms didn't checked
+      
+    }
+  }
   //alert("after ajax");
   
 }

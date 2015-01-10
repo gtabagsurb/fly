@@ -54,14 +54,14 @@
     $message.="Adults: ".$adultsnumber."\n";
     if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
     if ($type==1) {
-      $message.="\n Round trip\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
+      $message.="\nROUND TRIP\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
     };
     
     if ($type==2) {
-      $message.="\n One way\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0];
+      $message.="\nONE WAY\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0];
     };
     if ($type==3) {
-      $message.="\n Multiple destination trip\n";
+      $message.="\nMULTIPLE DESTINATION TRIP\n";
       for ($i=0; $i<$flightsnumber; $i++) {
         if ($fromairport[$i]<>''){
             $message.=($i+1).". ".$departuredate[$i]." ".$fromairport[$i]." - ".$toairport[$i]."\n";
