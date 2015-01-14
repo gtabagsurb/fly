@@ -52,7 +52,8 @@
     if ($class==1) {$message.="Business class \n";};
     if ($class==2) {$message.="First class \n";};
     $message.="Adults: ".$adultsnumber."\n";
-    if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
+    //if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
+    $message.="Children: ".$childsnumber."\n";
     if ($type==1) {
       $message.="\nROUND TRIP\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
     };

@@ -258,6 +258,7 @@ function validateEmail(email) {
 function validate_and_send()
 {
   var Errors=false;
+  var ErrorsSet=[];
   var Type1 = document.forms[0].elements["OrderForm[tripType]"].value;
   var Type=0;
   switch(Type1) {
@@ -276,6 +277,7 @@ function validate_and_send()
   FullName=FullName.trim();
   if (FullName.length<1) {
     Errors=true;
+    ErrorsSet.push('Name cannot be blank');
     document.forms[0].elements["orderform-customer_name"].parentNode.className="input-container input-name has-error";
   }
   else {
@@ -286,14 +288,16 @@ function validate_and_send()
   Email=Email.trim();
   if (!validateEmail(Email)){
     Errors=true;
-    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-name has-error";
+    ErrorsSet.push('Email is not a valid email address')
+    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-mail has-error";
   }
   else{
-    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-name ";
+    document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-mail ";
   };  
   
   var Phone = document.forms[0].elements["orderform-customer_phone"].value;
   Phone=Phone.trim();
+  /*
   if((Phone.replace(/[^0-9]/g, '')).length < 10) { 
     Errors=true;
     document.forms[0].elements["orderform-customer_phone"].parentNode.className="input-container input-name has-error";
@@ -301,7 +305,7 @@ function validate_and_send()
   else {
     document.forms[0].elements["orderform-customer_phone"].parentNode.className="input-container input-name ";
   };
-  
+  */
   var ReturnDate = document.forms[0].elements["OrderForm[ways][returning_date][]"][0].value;
   
   var PointCount = document.forms[0].elements["OrderForm[ways][from][]"].length;
@@ -347,10 +351,18 @@ function validate_and_send()
     if (FromAirport[0]=="" || ToAirport[0]=="" || DepartureDate[0]=="") {
       Errors=true;
       console.log("Flight Error!");
+      ErrorsSet.push('Fill all destinations and dates');
+      if (FromAirport[0]=="") {document.getElementById("flight-from").parentNode.className="input-container has-error";} 
+      else {document.getElementById("flight-from").parentNode.className="input-container ";};
+      if (ToAirport[0]=="") {document.getElementById("flight-to").parentNode.className="input-container has-error";} 
+      else {document.getElementById("flight-to").parentNode.className="input-container ";};
+      if (DepartureDate[0]=="") {document.forms[0].elements["OrderForm[ways][departing_date][]"][0].parentNode.className="input-container input-date has-error";} 
+      else {document.forms[0].elements["OrderForm[ways][departing_date][]"][0].parentNode.className="input-container input-date ";};
     }
-    if (Type==1 && ReturnDate=="") {
-      console.log("ReturnDate Error!");
-    }
+    if (Type==1){
+      if (ReturnDate==""){document.forms[0].elements["OrderForm[ways][returning_date][]"][0].parentNode.className="input-container input-date has-error";} 
+      else {document.forms[0].elements["OrderForm[ways][returning_date][]"][0].parentNode.className="input-container input-date ";} 
+    };
   };
   //alert("len: "+PointCount);
   //alert(FromAirport);
@@ -385,15 +397,28 @@ function validate_and_send()
     msg += "&fromairport"+i.toString()+"="+FromAirport[i]+"&toairport"+i.toString()+"="+ToAirport[i]+"&departuredate"+i.toString()+"="+DepartureDate[i];
     if (Type!=3){break;};
   };
-  //alert(msg);
 
+  if (!document.forms[0].elements["order-form-terms"].checked){
+    Errors=true;
+    ErrorsSet.push("You must accept offer terms");
+  }
+   
   if (Errors){
     console.log("Error!");
+    //document.getElementsByClassName("error-summary")[0].style.display="block";
+    
+    
+    document.getElementsByClassName("error-summary")[0].getElementsByTagName('ul')[0].innerHTML='';
+    $.each(ErrorsSet, function( index, value ) {
+      document.getElementsByClassName("error-summary")[0].getElementsByTagName('ul')[0].innerHTML+='<li>'+value+'</li>';
+    });
+    
+    
+    
     document.getElementsByClassName("error-summary")[0].style.display="block";
   }
   else{
-    if (document.forms[0].elements["order-form-terms"].checked) {
-      $.ajax({
+        $.ajax({
         type: "POST",
         url: "db_save.php",
         data: msg,
@@ -409,10 +434,7 @@ function validate_and_send()
           alert( 'произошла ошибка при выполнении запроса' );
         }
       });
-    }
-    else { //if terms didn't checked
-      
-    }
+
   }
   //alert("after ajax");
   
