@@ -3,8 +3,9 @@
   if(mysqli_connect_errno())
     die('Ошибка соединения: '.mysqli_connect_error()); //или if(!$link) {..
   else {
-    //$tmp="AA";
-    $query="SELECT iato AS value, airport AS label FROM prd_airports WHERE airport like concat('%','".$_GET['term']."','%')";
+    $phrase=$_GET['term']."%";
+    $query="SELECT iata AS value, airport_full AS label FROM ffs_airports WHERE (iata like '".$phrase."') OR (country like '".$phrase."') OR (city like '".$phrase."') OR (airport like '".$phrase."')";
+    //echo $query;
     //$query="SELECT iato AS value, airport AS label FROM prd_airports WHERE airport like concat('%','".$tmp."','%')";
     //echo $query;
     $elements=mysqli_query($link,$query); 
@@ -24,7 +25,5 @@
     //echo $res;
     $json = json_encode($row_set);
     print $json;
-    
-    
-  }
+   }
 ?>

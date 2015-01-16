@@ -29,7 +29,9 @@
     $query = "SELECT id FROM orders WHERE ordertime='".$ordertime."' AND fullname='".$fullname."' AND email='".$email."'";
     $orderid=mysqli_fetch_assoc(mysqli_query($link,$query))['id'];
     $fromairport=[];
+    $fromairport_full=[];
     $toairport=[];
+    $toairport_full=[];
     $departuredate=[];
     $j=0;
     for ($i=0; $i<((count($_POST)-7)/3+1); $i++) {
@@ -41,6 +43,12 @@
             $departuredate[$j]=$link->real_escape_string($_POST['departuredate'.$i]);
             $query="INSERT INTO flights(fromairport, toairport, departure, orderid) VALUES ('".$fromairport[$j]."', '".$toairport[$j]."', '".$departuredate[$j]."', '".$orderid."')";
             $elements=mysqli_query($link,$query);
+            $query="SELECT airport_full FROM ffs_airports WHERE iata='".$fromairport[$j]."'";
+            $elements=mysqli_query($link,$query); 
+            $fromairport_full[$j] = mysqli_fetch_assoc($elements)['airport_full'];
+            $query="SELECT airport_full FROM ffs_airports WHERE iata='".$toairport[$j]."'";
+            $elements=mysqli_query($link,$query); 
+            $toairport_full[$j] = mysqli_fetch_assoc($elements)['airport_full'];
             $j++;
           }
       }
@@ -55,21 +63,21 @@
     //if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
     $message.="Children: ".$childsnumber."\n";
     if ($type==1) {
-      $message.="\nROUND TRIP\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
+      $message.="\nROUND TRIP\nFrom: ".$fromairport_full[0]."\nTo: ".$toairport_full[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
     };
     
     if ($type==2) {
-      $message.="\nONE WAY\nFrom: ".$fromairport[0]."\nTo: ".$toairport[0]."\nDeparture: ".$departuredate[0];
+      $message.="\nONE WAY\nFrom: ".$fromairport_full[0]."\nTo: ".$toairport_full[0]."\nDeparture: ".$departuredate[0];
     };
     if ($type==3) {
       $message.="\nMULTIPLE DESTINATION TRIP\n";
       for ($i=0; $i<$flightsnumber; $i++) {
         if ($fromairport[$i]<>''){
-            $message.=($i+1).". ".$departuredate[$i]." ".$fromairport[$i]." - ".$toairport[$i]."\n";
+            $message.=($i+1).". ".$departuredate[$i]."\n    FROM: ".$fromairport_full[$i]."\n    TO: ".$toairport_full[$i]."\n";
         }
       }
     };
-    //echo "\n".$message."\n";
+    echo "\n".$message."\n";
     if (mail("fs34dfg34@flightforsale.com", $subject, $message)) { 
       echo "message acepted for delivery"; 
     } else { 
