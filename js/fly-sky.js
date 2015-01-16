@@ -328,6 +328,7 @@ function validate_and_send()
     alert(s);
     */
     var EmptySet=true;
+    var LocalErrors=false;
     for (var i=0; i<PointCount; i++) {
       FromAirport[i] = document.forms[0].elements["OrderForm[ways][from][]"][i].value;
       ToAirport[i] = document.forms[0].elements["OrderForm[ways][to][]"][i].value;
@@ -335,14 +336,27 @@ function validate_and_send()
       if (FromAirport[i]!="" || ToAirport[i]!="" || DepartureDate[i]!="") {
         EmptySet=false;
         if (FromAirport[i]=="" || ToAirport[i]=="" || DepartureDate[i]=="") {
-          Errors=true;
+          LocalErrors=true;
           console.log("Flight Error!");
+          /*
+          if (FromAirport[i]=="") {document.getElementById("flight-from").parentNode.className="input-container has-error";} 
+          else {document.getElementById("flight-from").parentNode.className="input-container ";};
+          if (ToAirport[i]=="") {document.getElementById("flight-to").parentNode.className="input-container has-error";} 
+          else {document.getElementById("flight-to").parentNode.className="input-container ";};
+          if (DepartureDate[i]=="") {document.forms[0].elements["OrderForm[ways][departing_date][]"][i].parentNode.className="input-container input-date has-error";} 
+          else {document.forms[0].elements["OrderForm[ways][departing_date][]"][i].parentNode.className="input-container input-date ";};
+          */
+          
         }
       }
     };
-    if (EmptySet && !Errors){
-      Errors=true;
+    if (EmptySet && !LocalErrors){
+      LocalErrors=true;
     };
+    if (LocalErrors) {
+      Errors=LocalErrors;
+      ErrorsSet.push('Fill all destinations and dates');
+    }
   }
   else { //one-way or roundtrip
     FromAirport[0] = document.forms[0].elements["OrderForm[ways][from][]"][0].value;
