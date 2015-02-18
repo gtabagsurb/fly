@@ -492,7 +492,7 @@ textarea {
 
 body   {
 
-  background: #fff url(../img/bg5.jpg) no-repeat center 60px;;
+  background: #fff url(../img/bl.png) no-repeat center 60px;;
 
   margin: 0;
 
@@ -676,7 +676,7 @@ ul.top-menu {
   /* color: #312f3e; */
   /*color: #312f3e;*/
   
-  text-shadow: #312f3e 1px 0px, #312f3e 1px 1px, #312f3e 0px 1px, #312f3e -1px 1px, #312f3e -1px 0px, #312f3e -1px -1px, #312f3e 0px -1px, #312f3e 1px -1px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px;
+  /*text-shadow: #312f3e 1px 0px, #312f3e 1px 1px, #312f3e 0px 1px, #312f3e -1px 1px, #312f3e -1px 0px, #312f3e -1px -1px, #312f3e 0px -1px, #312f3e 1px -1px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px, #312f3e 0 0 3px;*/
   
 
   font-weight: normal;
@@ -693,7 +693,7 @@ ul.top-menu {
 
   line-height: 60px;
 
-  margin-top:110px;
+  margin-top:65px;
 
   margin-bottom: 0;
 
@@ -723,7 +723,7 @@ ul.top-menu {
   /* color: #312f3e; */
   color: #f5f5f5;
   
-    text-shadow: #312f3e 1px 0px, #312f3e 1px 1px, #312f3e 0px 1px, #312f3e -1px 1px, #312f3e -1px 0px, #312f3e -1px -1px, #312f3e 0px -1px, #312f3e 1px -1px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 3px;
+  /*text-shadow: #312f3e 1px 0px, #312f3e 1px 1px, #312f3e 0px 1px, #312f3e -1px 1px, #312f3e -1px 0px, #312f3e -1px -1px, #312f3e 0px -1px, #312f3e 1px -1px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 2px, #312f3e 0 0 3px;*/
 
   text-align: center;
 
@@ -743,7 +743,7 @@ ul.top-menu {
 
   min-height: 408px;
 
-  margin-top:40px;
+  margin-top:0px;
 
 }
 
