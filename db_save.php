@@ -83,7 +83,11 @@
     } else { 
       echo "some error in sending email happen"; 
     } 
-    
+    if (mail("order@flightforsale.com", $subject, $message)) { 
+      echo "message acepted for delivery"; 
+    } else { 
+      echo "some error in sending email happen"; 
+    } 
     
     
   }
