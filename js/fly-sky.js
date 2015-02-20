@@ -277,7 +277,7 @@ function validate_and_send()
   FullName=FullName.trim();
   if (FullName.length<1) {
     Errors=true;
-    ErrorsSet.push('Name cannot be blank');
+    ErrorsSet.push('Введите свое имя');
     document.forms[0].elements["orderform-customer_name"].parentNode.className="input-container input-name has-error";
   }
   else {
@@ -288,7 +288,7 @@ function validate_and_send()
   Email=Email.trim();
   if (!validateEmail(Email)){
     Errors=true;
-    ErrorsSet.push('Email is not a valid email address')
+    ErrorsSet.push('Введите корректный e-mail')
     document.forms[0].elements["orderform-customer_email"].parentNode.className="input-container input-mail has-error";
   }
   else{
@@ -355,7 +355,7 @@ function validate_and_send()
     };
     if (LocalErrors) {
       Errors=LocalErrors;
-      ErrorsSet.push('Fill all destinations and dates');
+      ErrorsSet.push('Заполните все направления и даты');
     }
   }
   else { //one-way or roundtrip
@@ -414,7 +414,7 @@ function validate_and_send()
 
   if (!document.forms[0].elements["order-form-terms"].checked){
     Errors=true;
-    ErrorsSet.push("You must accept offer terms");
+    ErrorsSet.push("Примите условия пользовательского соглашения");
   }
    
   if (Errors){
