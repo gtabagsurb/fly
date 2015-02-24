@@ -434,7 +434,7 @@ function validate_and_send()
   else{
         $.ajax({
         type: "POST",
-        url: "db_save.php",
+        url: "/fly-ru/db_save.php",
         data: msg,
         success: function( data ) {
           //alert( data ); // пришедшие данные
