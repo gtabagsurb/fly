@@ -440,7 +440,7 @@ function validate_and_send()
           //alert( data ); // пришедшие данные
         },
         complete: function( xhr ) {
-           $(".order-form-container").replaceWith("<div class='order-form-container'><div class='order-form-flight order-form-flight-done'>	<h2>Thank you for your inquiry</h2>	<h4>Once we receive your request, one of our representatives will contact<br> you to provide the information you need.</h4>	<h4>FlightForSale Discount Flights <br>		+1 (954) 239 2196<br>		<a href=''>info@flightforsale.com</a>	</h4>	<div class='clearfix'></div>	<div class='form-border clearfix'></div>	<div class='getquote-container'>		<a href='http://flightforsale.ru' class='getquote-form'>Another quote</a>	</div></div> <div>");
+           $(".order-form-container").replaceWith("<div class='order-form-container'><div class='order-form-flight order-form-flight-done'>	<h2>Спасибо за Ваш запрос</h2>	<h4>Как только мы получим Ваш запрос, один из наших представителей свяжется с Вами<br> и предоставит наши лучшие предложения.</h4>	<h4>FlightForSale<br>		8-800-500-60-79<br>		<a href=''>info@flightforsale.ru</a>	</h4>	<div class='clearfix'></div>	<div class='form-border clearfix'></div>	<div class='getquote-container'>		<a href='http://flightforsale.ru' class='getquote-form'>Новый запрос</a>	</div></div> <div>");
           //S(".order-form-container").
           //alert( 'запрос успешно выполнен' );
         },
