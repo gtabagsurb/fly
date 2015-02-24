@@ -233,7 +233,7 @@ function initializeMap($selector) {
         }
     ];
 
-    var gpsLocation = new google.maps.LatLng(25.968647, -80.143572);
+    var gpsLocation = new google.maps.LatLng(54.726949, 55.941009);
 
     var mapOptions = {
         center: gpsLocation,
