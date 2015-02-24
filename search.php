@@ -4,7 +4,7 @@
     die('Ошибка соединения: '.mysqli_connect_error()); //или if(!$link) {..
   else {
     $phrase=$_GET['term']."%";
-    $query="SELECT iata AS value, airport_full AS label FROM ffs_airports WHERE (iata like '".$phrase."') OR (country like '".$phrase."') OR (city like '".$phrase."') OR (airport like '".$phrase."')";
+    $query="SELECT iata AS value, airport_full_rus AS label FROM ffs_airports WHERE (iata like '".$phrase."') OR (country like '".$phrase."') OR (city like '".$phrase."') OR (airport like '".$phrase."') OR (country_rus like '".$phrase."') OR (city_rus like '".$phrase."') OR (airport_rus like '".$phrase."')";
     //echo $query;
     //$query="SELECT iato AS value, airport AS label FROM prd_airports WHERE airport like concat('%','".$tmp."','%')";
     //echo $query;
