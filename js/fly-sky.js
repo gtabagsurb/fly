@@ -44,7 +44,7 @@ function initializeWayContainer(link) {
     $iataInputs.autocomplete({
         //source : $("#order-form").data("way-suggestion-url"),
         //source : availableTags,
-      source : "/fly-ru/search.php",      
+      source : "search.php",      
      /* 
       source: function( request, response ) {
                     $.ajax({
@@ -434,7 +434,7 @@ function validate_and_send()
   else{
         $.ajax({
         type: "POST",
-        url: "/fly-ru/db_save.php",
+        url: "db_save.php",
         data: msg,
         success: function( data ) {
           //alert( data ); // пришедшие данные
