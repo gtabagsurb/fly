@@ -64,7 +64,7 @@
     //if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
     $message.="Детей: ".$childsnumber."\n";
     if ($type==1) {
-      $message.="\ТУДА И ОБРАТНО\nИз: ".$fromairport_full[0]."\nДо: ".$toairport_full[0]."\nВылет туда: ".$departuredate[0]."\nВылет обратно: ".$returndate;
+      $message.="\nТУДА И ОБРАТНО\nИз: ".$fromairport_full[0]."\nДо: ".$toairport_full[0]."\nВылет туда: ".$departuredate[0]."\nВылет обратно: ".$returndate;
     };
     
     if ($type==2) {
