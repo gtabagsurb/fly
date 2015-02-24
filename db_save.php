@@ -55,7 +55,7 @@
     }
     $flightsnumber=$j;
     mysqli_close($link);
-    $subject="Order ".$orderid." from ".$fullname." ".$email;
+    $subject="Заказ №".$orderid." from ".$fullname." ".$email;
     $message="\nOrder ".$orderid."\n\n".$fullname."\n".$email."\n".$phone."\n";
     if ($class==1) {$message.="Business class \n";};
     if ($class==2) {$message.="First class \n";};
