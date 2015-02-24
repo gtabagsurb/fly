@@ -3,6 +3,7 @@
   if(mysqli_connect_errno())
     die('Ошибка соединения: '.mysqli_connect_error()); //или if(!$link) {..
   else {
+    $link->set_charset("utf8");
     $fullname = $link->real_escape_string($_POST['fullname']);
     $ordertime = date("Y-m-d H:i:s");
     $returndate = $_POST['returndate'];
@@ -56,24 +57,24 @@
     $flightsnumber=$j;
     mysqli_close($link);
     $subject="Заказ №".$orderid." from ".$fullname." ".$email;
-    $message="\nOrder ".$orderid."\n\n".$fullname."\n".$email."\n".$phone."\n";
-    if ($class==1) {$message.="Business class \n";};
-    if ($class==2) {$message.="First class \n";};
-    $message.="Adults: ".$adultsnumber."\n";
+    $message="\nЗаказ ".$orderid."\n\n".$fullname."\n".$email."\n".$phone."\n";
+    if ($class==1) {$message.="Бизнес-класс \n";};
+    if ($class==2) {$message.="Первый класс \n";};
+    $message.="Взрослых: ".$adultsnumber."\n";
     //if ($childsnumber>0) {$message.="Children: ".$childsnumber."\n";};
-    $message.="Children: ".$childsnumber."\n";
+    $message.="Детей: ".$childsnumber."\n";
     if ($type==1) {
-      $message.="\nROUND TRIP\nFrom: ".$fromairport_full[0]."\nTo: ".$toairport_full[0]."\nDeparture: ".$departuredate[0]."\nReturning: ".$returndate;
+      $message.="\ТУДА И ОБРАТНО\nИз: ".$fromairport_full[0]."\nДо: ".$toairport_full[0]."\nВылет туда: ".$departuredate[0]."\nВылет обратно: ".$returndate;
     };
     
     if ($type==2) {
-      $message.="\nONE WAY\nFrom: ".$fromairport_full[0]."\nTo: ".$toairport_full[0]."\nDeparture: ".$departuredate[0];
+      $message.="\nВ ОДИН КОНЕЦ\nИз: ".$fromairport_full[0]."\nДо: ".$toairport_full[0]."\nВылет: ".$departuredate[0];
     };
     if ($type==3) {
-      $message.="\nMULTIPLE DESTINATION TRIP\n";
+      $message.="\nНЕСКОЛЬКО ПУНКТОВ ПЕРЕЛЕТА\n";
       for ($i=0; $i<$flightsnumber; $i++) {
         if ($fromairport[$i]<>''){
-            $message.=($i+1).". ".$departuredate[$i]."\n    FROM: ".$fromairport_full[$i]."\n    TO: ".$toairport_full[$i]."\n";
+            $message.=($i+1).". ".$departuredate[$i]."\n    Из: ".$fromairport_full[$i]."\n    До: ".$toairport_full[$i]."\n";
         }
       }
     };
